@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { EDIT_POSTS_REQUEST } from "./../../redux/actions/actionsTypes";
+import { editPostsThunk } from "../../redux/thunks";
 import styles from "./Card.module.scss";
 
 function Card({ id, title, body, onDelete }) {
@@ -13,11 +13,8 @@ function Card({ id, title, body, onDelete }) {
   const dispatch = useDispatch();
 
   const handleEditPost = () => {
-    console.log("test");
-    dispatch({
-      type: EDIT_POSTS_REQUEST,
-      payload: { id, title: newTitle, body: newBody },
-    });
+    dispatch(editPostsThunk({ post_id: id, body: newBody, title: newTitle }));
+
     handleToggleEdit();
   };
 

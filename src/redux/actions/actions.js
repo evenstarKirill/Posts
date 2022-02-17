@@ -36,8 +36,9 @@ export const getPostRequest = () => ({
   type: GET_POSTS_REQUEST,
 });
 
-export const getPostSuccess = () => ({
+export const getPostSuccess = (posts) => ({
   type: GET_POSTS_SUCCESS,
+  payload: posts,
 });
 
 export const editPostFailure = () => ({
@@ -57,15 +58,15 @@ export const editPostSuccess = (id, title, body) => ({
   },
 });
 
-export const postPostFailure = () => ({
+export const addPostFailure = () => ({
   type: ADD_POSTS_FAILURE,
 });
 
-export const postPostRequest = () => ({
+export const addPostRequest = () => ({
   type: ADD_POSTS_REQUEST,
 });
 
-export const postPostSuccess = (id, title, body) => ({
+export const addPostSuccess = (id, title, body) => ({
   type: ADD_POSTS_SUCCESS,
   payload: {
     id,

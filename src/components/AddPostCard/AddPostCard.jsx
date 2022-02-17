@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ADD_POSTS_REQUEST } from "./../../redux/actions/actionsTypes";
+import { addPostsThunk } from "../../redux/thunks";
+// import { ADD_POSTS_REQUEST } from "./../../redux/actions/actionsTypes";
 import styles from "./AddPostCard.module.scss";
 
 function AddPostCard(id, title, body) {
@@ -19,25 +20,18 @@ function AddPostCard(id, title, body) {
   };
 
   const handleAddPost = () => {
-    dispatch({
-      type: ADD_POSTS_REQUEST,
-      payload: { id, title: newTitle, body: newBody },
-    });
+    dispatch(addPostsThunk({ post_id: id, title: newTitle, body: newBody }));
   };
   return (
     <div className={styles.wrapper}>
       <div className={styles.textarea_wrapper}>
         <textarea
-          // rows="2"
-          // cols="50"
           onChange={handleTitleChange}
           placeholder="title"
           className={styles.title}
         />
       </div>
       <textarea
-        // rows="9"
-        // cols="50"
         onChange={handleBodyChange}
         placeholder="body"
         className={styles.body}
